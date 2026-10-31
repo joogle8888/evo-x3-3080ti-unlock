@@ -2,7 +2,7 @@
 
 Context: https://github.com/windows-GPU-UNLOCK/Windows-GPU-UNLOCK/issues/164
 
-NOT included on purpose: the card's VBIOS dump (PROM.BIN) and the NVIDIA firmware files (NVIDIA licence, dump your own card / generate the assets yourself).
+Also available (Release `assets-v1`): the VBIOS dump of my card (`10de_2208_1462_3896.rom`) and the NVIDIA 610.43.03 inputs used for the unlock (gsp_ga10x.bin, booter, gsp_boot, v67, kernel-module source, nvidia-utils package, NVIDIA-LICENSE) with SHA256SUMS.txt. The NVIDIA files belong to NVIDIA and are subject to NVIDIA's license terms.
 
 ## Files
 - `evo-x3-3080ti-local-changes.patch` - 8 changed lines on top of LightEssence/universal-windows-unlock-gpu (PR #153, commit e12e611): no auto-unlock after 30 s, Enter no longer unlocks, PCI command set to Memory-only (0x2, IO off) so the platform's PciIo BME enable gives 0x6 == original|4.
