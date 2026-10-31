@@ -1,0 +1,58 @@
+--- a/src/app.c
++++ b/src/app.c
+@@ -264,12 +264,12 @@
+ 
+     /* 3. Interactive Menu */
+     PrintColor(EFI_YELLOW | EFI_BLACK, L"Boot Options:\r\n");
+-    Print(L"  [U] Unlock All Ready GPUs & Boot Windows (Automatic in 30s)\r\n");
+-    Print(L"  [S] Boot Stock Windows (Bypass Unlock)\r\n\r\n");
++    Print(L"  [U] Unlock All Ready GPUs & Boot Windows (only if U is pressed)\r\n");
++    Print(L"  [S] Boot Stock Windows (Bypass Unlock) - DEFAULT after 30s\r\n\r\n");
+     Print(L"Choice [U/S]: ");
+ 
+     EFI_INPUT_KEY key;
+-    BOOLEAN unlock = TRUE;
++    BOOLEAN unlock = FALSE; /* LOCAL MOD: never unlock unattended */
+     UINTN seconds = 30;
+ 
+     while (seconds > 0) {
+@@ -281,7 +281,7 @@
+                 LogWrite("Operator choice: S (Stock)\n");
+                 break;
+             }
+-            if (key.UnicodeChar == L'u' || key.UnicodeChar == L'U' || key.UnicodeChar == 13) {
++            if (key.UnicodeChar == L'u' || key.UnicodeChar == L'U') {
+                 unlock = TRUE;
+                 PrintColor(EFI_LIGHTGREEN | EFI_BLACK, L"U (Unlock selected)\r\n");
+                 LogWrite("Operator choice: U (Unlock)\n");
+--- a/src/display_release.c
++++ b/src/display_release.c
+@@ -47,7 +47,7 @@
+      * Bit 2 (Bus Master Enable) MUST BE 0 before Falcon transaction claim.
+      * The transaction enables Bus Master itself when DMA buffers are mapped.
+      */
+-    cmd = (cmd & ~0x0004) | 0x0003;
++    cmd = (cmd & ~0x0005) | 0x0002; /* LOCAL MOD: Memory only (IO off) so PciIo BME enable keeps cmd == orig|4 */
+     status = gpu->pci_io->Pci.Write(gpu->pci_io, EfiPciIoWidthUint16, 4, 1, &cmd);
+     if (EFI_ERROR(status)) {
+         LogWrite("[Decode] Failed to write PCI Command register (%#llx)\n", (unsigned long long)status);
+@@ -116,7 +116,7 @@
+     if (gpu->pci_io && gpu->pci_io->Pci.Read && gpu->pci_io->Pci.Write) {
+         UINT16 cmd = 0;
+         gpu->pci_io->Pci.Read(gpu->pci_io, EfiPciIoWidthUint16, 4, 1, &cmd);
+-        cmd = (cmd & ~0x0004) | 0x0003; /* Enable IO + Memory decode, disable Bus Master */
++        cmd = (cmd & ~0x0005) | 0x0002; /* LOCAL MOD: Memory only (IO off) so PciIo BME enable keeps cmd == orig|4 */ /* Enable IO + Memory decode, disable Bus Master */
+         gpu->pci_io->Pci.Write(gpu->pci_io, EfiPciIoWidthUint16, 4, 1, &cmd);
+         LogWrite("[Display] PCI Command primed for Windows handoff: %#06x\n", cmd);
+     }
+--- a/src/unlock_engine.c
++++ b/src/unlock_engine.c
+@@ -174,7 +174,7 @@
+     LogWrite("[Unlock] Error: Failed to read PCI command register: %#llx\n", (unsigned long long)pci_st);
+     return pci_st;
+   }
+-  pci_cmd = (pci_cmd & ~0x0004) | 0x0003;
++  pci_cmd = (pci_cmd & ~0x0005) | 0x0002; /* LOCAL MOD: Memory only (IO off) */
+   pci_st = gpu->pci_io->Pci.Write(gpu->pci_io, EfiPciIoWidthUint16, 4, 1, &pci_cmd);
+   if (EFI_ERROR(pci_st)) {
+     LogWrite("[Unlock] Error: Failed to write PCI command register: %#llx\n", (unsigned long long)pci_st);
