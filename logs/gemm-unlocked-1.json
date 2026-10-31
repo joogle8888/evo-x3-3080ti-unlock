@@ -1,0 +1,29 @@
+{
+ "label": "UNLOCKED-boot3",
+ "time": "2026-10-31T23:17:21",
+ "N": 4096,
+ "gpu": "NVIDIA GeForce RTX 3080 Ti, 560.94, 00000000:65:00.0, 350.00 W, 2100 MHz, 9501 MHz, 53",
+ "modes": {
+  "fp32_pedantic": {
+   "median_tflops": 23.05,
+   "min": 22.95,
+   "max": 23.14
+  },
+  "fp16_tensor_fp32_accumulate": {
+   "median_tflops": 109.4,
+   "min": 108.31,
+   "max": 110.48
+  },
+  "bf16_tensor_fp32_accumulate": {
+   "median_tflops": 112.21,
+   "min": 110.31,
+   "max": 112.47
+  },
+  "tf32_tensor_fp32_accumulate": {
+   "median_tflops": 56.0,
+   "min": 55.29,
+   "max": 56.37
+  }
+ },
+ "gpu_after": "NVIDIA GeForce RTX 3080 Ti, 560.94, 00000000:65:00.0, 350.00 W, 2100 MHz, 9501 MHz, 70"
+}

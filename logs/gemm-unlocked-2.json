@@ -1,0 +1,29 @@
+{
+ "label": "UNLOCKED-second",
+ "time": "2026-10-31T23:44:11",
+ "N": 4096,
+ "gpu": "NVIDIA GeForce RTX 3080 Ti, 560.94, 00000000:65:00.0, 350.00 W, 2100 MHz, 9501 MHz, 43",
+ "modes": {
+  "fp32_pedantic": {
+   "median_tflops": 23.41,
+   "min": 23.32,
+   "max": 23.57
+  },
+  "fp16_tensor_fp32_accumulate": {
+   "median_tflops": 111.26,
+   "min": 109.99,
+   "max": 111.55
+  },
+  "bf16_tensor_fp32_accumulate": {
+   "median_tflops": 113.37,
+   "min": 112.4,
+   "max": 114.28
+  },
+  "tf32_tensor_fp32_accumulate": {
+   "median_tflops": 56.84,
+   "min": 56.33,
+   "max": 56.93
+  }
+ },
+ "gpu_after": "NVIDIA GeForce RTX 3080 Ti, 560.94, 00000000:65:00.0, 350.00 W, 2100 MHz, 9501 MHz, 64"
+}

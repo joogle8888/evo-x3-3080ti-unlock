@@ -1,0 +1,29 @@
+{
+ "label": "LOCKED-normalboot",
+ "time": "2026-10-31T23:26:49",
+ "N": 4096,
+ "gpu": "NVIDIA GeForce RTX 3080 Ti, 560.94, 00000000:65:00.0, 350.00 W, 2100 MHz, 9501 MHz, 47",
+ "modes": {
+  "fp32_pedantic": {
+   "median_tflops": 23.35,
+   "min": 23.2,
+   "max": 23.46
+  },
+  "fp16_tensor_fp32_accumulate": {
+   "median_tflops": 66.67,
+   "min": 66.44,
+   "max": 67.17
+  },
+  "bf16_tensor_fp32_accumulate": {
+   "median_tflops": 67.17,
+   "min": 67.0,
+   "max": 67.28
+  },
+  "tf32_tensor_fp32_accumulate": {
+   "median_tflops": 33.78,
+   "min": 33.72,
+   "max": 33.81
+  }
+ },
+ "gpu_after": "NVIDIA GeForce RTX 3080 Ti, 560.94, 00000000:65:00.0, 350.00 W, 2100 MHz, 9501 MHz, 71"
+}

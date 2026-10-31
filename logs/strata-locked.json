@@ -1,0 +1,38 @@
+{
+ "label": "LOCKED",
+ "time": "2026-10-31T23:31:43",
+ "rows": [
+  {
+   "prompt": 6276,
+   "reused": 0,
+   "read": 6276,
+   "prefill_toks": 1042.3,
+   "gen": 200,
+   "decode_toks": 69.8
+  },
+  {
+   "prompt": 12451,
+   "reused": 0,
+   "read": 12451,
+   "prefill_toks": 1094.5,
+   "gen": 200,
+   "decode_toks": 86.9
+  },
+  {
+   "prompt": 12494,
+   "reused": 0,
+   "read": 12494,
+   "prefill_toks": 1098.3,
+   "gen": 200,
+   "decode_toks": 83.6
+  },
+  {
+   "prompt": 24938,
+   "reused": 0,
+   "read": 24938,
+   "prefill_toks": 1112.1,
+   "gen": 200,
+   "decode_toks": 79.9
+  }
+ ]
+}

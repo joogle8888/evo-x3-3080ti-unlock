@@ -1,0 +1,38 @@
+{
+ "label": "UNLOCKED",
+ "time": "2026-10-31T23:46:07",
+ "rows": [
+  {
+   "prompt": 6276,
+   "reused": 0,
+   "read": 6276,
+   "prefill_toks": 1022.9,
+   "gen": 200,
+   "decode_toks": 67.8
+  },
+  {
+   "prompt": 12451,
+   "reused": 0,
+   "read": 12451,
+   "prefill_toks": 1075.6,
+   "gen": 200,
+   "decode_toks": 87.3
+  },
+  {
+   "prompt": 12494,
+   "reused": 0,
+   "read": 12494,
+   "prefill_toks": 1072.7,
+   "gen": 200,
+   "decode_toks": 84.6
+  },
+  {
+   "prompt": 24938,
+   "reused": 0,
+   "read": 24938,
+   "prefill_toks": 1098.2,
+   "gen": 200,
+   "decode_toks": 79.9
+  }
+ ]
+}
